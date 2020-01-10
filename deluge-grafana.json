@@ -14,9 +14,9 @@
   },
   "description": "A Deluge statistics dashboard",
   "editable": true,
-  "gnetId": 8259,
+  "gnetId": 9846,
   "graphTooltip": 0,
-  "id": 57,
+  "id": 6,
   "links": [],
   "panels": [
     {
@@ -60,6 +60,7 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
+      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -141,6 +142,7 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
+      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -222,6 +224,7 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
+      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -303,6 +306,7 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
+      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -385,6 +389,7 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
+      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -467,6 +472,7 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
+      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -548,6 +554,7 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
+      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -568,7 +575,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "deluge_libtorrent_peers",
+          "expr": "deluge_libtorrent_dht_dht_peers",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "",
@@ -630,6 +637,7 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
+      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -650,7 +658,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "deluge_libtorrent_upload_bytes_total{type=\"payload\"}/deluge_libtorrent_download_bytes_total{type=\"payload\"}",
+          "expr": "deluge_libtorrent_net_sent_payload_bytes_total/deluge_libtorrent_net_recv_payload_bytes_total",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "",
@@ -677,12 +685,14 @@
       "dashes": false,
       "datasource": "Prometheus",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 8,
         "w": 14,
         "x": 0,
         "y": 6
       },
+      "hiddenSeries": false,
       "id": 8,
       "legend": {
         "alignAsTable": true,
@@ -699,6 +709,10 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "connected",
+      "options": {
+        "dataLinks": []
+      },
+      "paceLength": 10,
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -718,7 +732,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(deluge_libtorrent_upload_bytes_total{type=\"payload\"}[30s])",
+          "expr": "irate(deluge_libtorrent_net_sent_payload_bytes_total[30s])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -726,7 +740,7 @@
           "refId": "A"
         },
         {
-          "expr": "irate(deluge_libtorrent_download_bytes_total{type=\"payload\"}[30s])*-1",
+          "expr": "irate(deluge_libtorrent_net_recv_payload_bytes_total[30s])*-1",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -817,6 +831,7 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
+      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -837,7 +852,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "deluge_libtorrent_download_bytes_total{type=\"payload\"}",
+          "expr": "deluge_libtorrent_net_recv_payload_bytes_total",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "",
@@ -898,6 +913,7 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
+      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -918,7 +934,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "deluge_libtorrent_upload_bytes_total{type=\"payload\"}",
+          "expr": "deluge_libtorrent_net_sent_payload_bytes_total",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "",
@@ -940,7 +956,7 @@
     }
   ],
   "refresh": "30s",
-  "schemaVersion": 16,
+  "schemaVersion": 21,
   "style": "dark",
   "tags": [
     "prometheus",
@@ -981,6 +997,6 @@
   },
   "timezone": "",
   "title": "Deluge Metrics",
-  "uid": "y_TlWHJiz",
-  "version": 10
+  "uid": "aUec1E9ik",
+  "version": 2
 }
